@@ -9,7 +9,7 @@ function FoodItems() {
 
   const [FoodData, setFoodData] = useState([]);
   const getData = useCallback((async () => {
-    await axios.get(`https://api.edamam.com/api/food-database/v2/parser?app_id=${process.env.REACT_APP_FOOD_ID}&app_key=${process,env.REACT_APP_FOOD_KEY}`)
+    await axios.get(`https://api.edamam.com/api/food-database/v2/parser?app_id=${process.env.REACT_APP_FOOD_ID}&app_key=${process.env.REACT_APP_FOOD_KEY}`)
       .then((res) => { setFoodData(res.data.hints) })
       .catch((e) => { console.log(e) })
   }), [])

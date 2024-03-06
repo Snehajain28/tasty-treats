@@ -10,7 +10,7 @@ function Card({ data, text }) {
     const [click, setClick] = useState(false);
 
     const navigate = useNavigate();
-   
+
     const setData = () => {
         window.scroll({
             top: 0,
@@ -56,15 +56,18 @@ function Card({ data, text }) {
         <div
             className='h-[18rem] w-[9rem] md:w-[13rem] cursor-pointer rounded-lg p-2 shadow-xl gap-2 flex flex-col  items-center  '>
 
-            <img src={data.img || data?.image}
-                alt='' className='h-[7rem] img '>
-            </img>
+            <div className='flex items-center justify-between w-11/12'>
 
+                <img src={data.img || data?.image}
+                    alt='' className='h-[4rem] rounded-full img '>
+                </img>
+                <div className='text-[1rem]'>₹{data.price || parseInt(data.totalWeight) || data.nutrients.ENERC_KCAL}</div>
+
+            </div>
             <div className='font-semibold flex justify-end text-[1rem] text-center h-9'>
                 <p>{((data.name) || (data.label))?.substring(0, 20)}</p>
             </div>
 
-            <div className='text-[1.2rem]'>₹{data.price || parseInt(data.totalWeight) || data.nutrients.ENERC_KCAL}</div>
 
             <div className='flex items-center justify-end gap-[1rem] w-11/12'>
                 <div className='flex items-center'>
@@ -73,7 +76,7 @@ function Card({ data, text }) {
                 </div>
 
                 <div className=' relative' onClick={handleFavourites}>
-                    <Button click={click}/>
+                    <Button click={click} />
                 </div>
             </div>
             <button onClick={setData} className='bg-orange-500  lg:w-10/12 font-semibold px-4 p-2 rounded-lg text-white'>

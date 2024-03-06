@@ -31,15 +31,19 @@ function SearchBar() {
   };
 
   return (
-    <div className='w-[90vw] md:w-[60rem] flex flex-col mt-[5.7rem] md:mt-3 mb-[1.5rem] mx-auto'>
-      <input
+    <div className='w-[90vw] md:w-[60rem] flex flex-col mt-[1.5rem] md:mt-3 mb-[1.5rem] mx-auto'>
+      <div className='flex border-[2px] rounded-lg  '>
+          <input
         type='text'
         placeholder='Search For meal ?'
         onChange={handleChange}
         onKeyDown={handleKeyPress}
         value={query}
-        className='md:w-9/12 w-11/12 h-[3.4rem] lg:h-[4rem] px-4 flex justify-center border-[2px] rounded-lg mx-auto'
+        className=' border-none md:w-9/12 w-11/12 h-[3.4rem] lg:h-[4rem] px-4 flex justify-center  mx-auto'
       />
+      <button className='bg-orange-600 text-white font-semibold px-2 text-[1rem]'
+      >Search</button>
+      </div>
       <div className=' bg-white w-full shadow-lg rounded-xl'>
         {
           suggestions.length > 0 &&

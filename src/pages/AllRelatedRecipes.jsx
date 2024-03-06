@@ -6,7 +6,6 @@ import Navbar from '../components/Navbar';
 import Card from '../components/Card';
 import Loader from '../components/Loader';
 import SearchBar from '../components/SearchBar';
-import Sidebar from '../components/Sidebar';
 
 function AllRelatedRecipes() {
   const { query } = useParams();
@@ -36,7 +35,7 @@ function AllRelatedRecipes() {
     <>
       < Navbar />
 <div className='md:flex'>
-<Sidebar/>
+
 <div>
 <SearchBar />
 {

@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { FaSignOutAlt, FaShopify, FaList, FaShoppingCart, FaUserAlt } from "react-icons/fa";
+import { FaSignOutAlt, FaShopify, FaList, FaUserAlt } from "react-icons/fa";
 //import toast from "react-hot-toast";
 import { Link, useNavigate, } from "react-router-dom";
 import { MdClose, MdContactSupport } from "react-icons/md";
 import { HiHome, HiMenuAlt2 } from "react-icons/hi";
 import { TbMenuOrder } from "react-icons/tb";
-import { BiHeart, BiUserCircle } from 'react-icons/bi';
+import { BiCart, BiHeart, BiUserCircle } from 'react-icons/bi';
 import { useStateValues } from '../Utils/Provider';
 import logo from '../assests/logo.jpeg'
 import { signInWithPopup } from 'firebase/auth'
@@ -125,14 +125,19 @@ export default function Navbar() {
           {
             (token ?
               (<Link to={'/cart'} className='' >
-                <div className=' flex items-center justify-center bg-red-500 text-white   w-[5rem] px-2 py-2  font-semibold  gap-2 rounded-full '>
-                  <FaShoppingCart /> Cart
+                <div className=' flex items-center justify-center    w-[5rem]    font-semibold  gap-2 rounded-full '>
+                  <div className='flex justify-start h-full '>
+                    <BiCart className='hover:bg-gray-400  ' size={25} />
+                    <span className='animate-bounce b-9 py-0 px-[0.5rem] bg-green-500   rounded-full text-white'
+                    >{cartData?.length || 0}
+                    </span>
+                  </div>
+                  <BiUserCircle size={25} />
                 </div>
-                <div className='absolute md:top-1 top-0 animate-bounce md:right-3 right-5 bg-green-500 px-[0.5rem] py-0 rounded-full text-white'
-                >{cartData?.length || 0}</div>
+
               </Link>) :
-              (<button onClick={handleClick} className=' flex justify-center bg-red-500 text-white items-center w-[5rem] px-2 py-2  rounded-full font-semibold  gap-2 rounded-full '>
-                <FaUserAlt />Login
+              (<button onClick={handleClick} className=' flex justify-center  items-center w-[5rem] px-2 py-2  rounded-full font-semibold  gap-2 rounded-full '>
+                <FaUserAlt />
               </button>)
             )
           }
@@ -169,7 +174,7 @@ export default function Navbar() {
                         hamburger: false,
                       })}
                     >
-                      <BiHeart/>{"Favourites"}
+                      <BiHeart />{"Favourites"}
                     </Link>
                     {token &&
                       <Link className='flex border-b-[1px] items-center gap-2'

@@ -1,21 +1,24 @@
+import React from 'react'
 import { Link } from "react-router-dom";
 import { useStateValues } from "../Utils/Provider";
 import Navbar from "../components/Navbar";
 import Recipe from "../components/Recipe";
 import FryingPan from "../components/Fryingpan";
 
-const Favourites = () => {
+const Favorites = () => {
   const [{ favourites, abs }, dispatch] = useStateValues();
-
-  if (abs) {
+ if (abs) {
     console.log(dispatch)
   }
-  console.log(favourites)
-  return (
-    <div className="h-[100vh] w-[100vw]">
-      <Navbar />
-      {favourites.length === 0 && (
-        <div className="flex flex-col  mt-[6rem] items-center">
+ return (
+    <>
+    <Navbar/>
+      <div className="py-8 container mx-auto flex flex-wrap justify-center gap-10">
+        {  favourites &&   favourites.length > 0 ? (
+             favourites.map((item) => <Recipe recipe={item} />)
+        ) : (
+          <div>
+             <div className="flex flex-col  mt-[6rem] items-center">
           <p className="lg:text-4xl text-xl text-center text-red-400 font-semibold">
             Favourites list is empty
           </p>
@@ -29,14 +32,11 @@ const Favourites = () => {
             <FryingPan/>
           </div>
         </div>
-      )}
-      <div className="favourite container mt-[2rem] mx-auto py-5 flex flex-wrap justify-center gap-5">
-        {favourites.map((recipe) => (
-          <Recipe key={recipe.id} recipe={recipe} />
-        ))}
+          </div>
+        )}
       </div>
-    </div>
+    </>
   );
-};
+}
 
-export default Favourites;
+export default Favorites

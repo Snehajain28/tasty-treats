@@ -8,6 +8,11 @@ import Shop from "./pages/Shop";
 import Cart from "./components/Cart";
 import NotFound from "./pages/NotFound";
 import Favourites from "./pages/Favourites";
+import Navbar from "./components/Random";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Details from "./pages/Deatils";
+
 
 
 function App() {
@@ -68,9 +73,13 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/random" element={<Navbar />} />
+        <Route path="/contact" element={<Contact/>} />
+        <Route path="/about" element={<About />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/description" element={<Description />} />
+        <Route path="/:id" element={<Details />} />
         <Route path="/:query" element={<AllRelatedRecipes />} />
         <Route path="/favourites" element={<Favourites/>} />
         <Route path="*" element={<NotFound />} />

@@ -24,6 +24,11 @@ const reducers = (state, action) => {
           ...state,
           cartData: action.cartData,
         };
+        case "SET_USER":
+          return {
+            ...state,
+            user: action.user,
+          };
         case "SET_FAVOURITES":
         return {
           ...state,

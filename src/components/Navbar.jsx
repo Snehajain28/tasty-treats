@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { FaSignOutAlt, FaShopify, FaList, FaUserAlt } from "react-icons/fa";
 //import toast from "react-hot-toast";
 import { Link, useNavigate, } from "react-router-dom";
@@ -15,8 +14,6 @@ import { auth, provider } from '../Utils/auth'
 export default function Navbar() {
 
   const [{ token, cartData, hamburger }, dispatch] = useStateValues();
-  const [category, setCategory] = useState(false);
-  const [brand, setBrand] = useState(false);
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -66,85 +63,45 @@ export default function Navbar() {
   return (
 
     <div
-      className="w-full h-[60px] fixed bg-white  top-0 z-50 shadow-lg">
-      <div className="flex w-[90vw] mx-auto items-center justify-between h-full">
+      className="w-full h-[60px] fixed bg-white shadow-lg md:shadow-none top-0 z-50 ">
+      <div className="flex w-[90vw] mx-auto items-center  justify-between h-full">
 
-        <div className='flex items-center gap-3'>
-          {
-            !hamburger ?
-              (<HiMenuAlt2
-                onClick={() => dispatch({
-                  type: "SET_HAMBURGER",
-                  hamburger: true,
-                })}
-                className="md:hidden cursor-pointer w-8 h-6 "
-              />) :
-              (
-                <MdClose
-                  onClick={() => dispatch({
-                    type: "SET_HAMBURGER",
-                    hamburger: false,
-                  })}
-                  className=" md:hidden cursor-pointer w-8 h-6 "
-                />
-              )
-          }
-          <Link to={'/'} className="flex  items-center  gap-1">
-            <img alt="" src={logo}
-              className="h-[2rem] w-[2rem] rounded-[35%] " />
-            <span className="text-md font-semibold ">Tasty Treats</span>
-          </Link>
-        </div>
+        <Link to={'/'} className="flex  items-center  gap-1">
+          <img alt="" src={logo}
+            className="h-[2rem] w-[2rem] rounded-[35%] " />
+          <span className="text-md font-semibold ">Tasty Treats</span>
+        </Link>
+
         <div className='flex h-full items-center'>
           {!hamburger && (
             <ul
-              className=" items-center w-auto z-50 p-0 hidden sm:flex gap-2" >
+              className=" items-center  z-50 p-0 hidden sm:flex gap-2" >
               <Link
-                className="flex font-normal hover:font-bold w-20 h-6 justify-center items-center px-12 text-base  hover:underline underline-offset-[4px] decoration-[1px] hover:text-[#262626] md:border-r-[2px] border-r-gray-300 hoverEffect last:border-r-0"
+                className="flex font-normal hover:font-bold w-[5rem] h-6 justify-center items-center  text-base  hover:underline underline-offset-[4px] decoration-[1px] hover:text-[#262626] md:border-r-[2px] border-r-gray-300 hoverEffect last:border-r-0"
                 to={'/'} >
                 <li>{"Home"}</li>
               </Link>
               <Link
-                className="flex font-normal hover:font-bold w-20 h-6 justify-center items-center px-12 text-base  hover:underline underline-offset-[4px] decoration-[1px] hover:text-[#262626] md:border-r-[2px] border-r-gray-300 hoverEffect last:border-r-0"
-                to={'/product'} >
+                className="flex font-normal hover:font-bold w-[5rem] h-6 justify-center items-center  text-base  hover:underline underline-offset-[4px] decoration-[1px] hover:text-[#262626] md:border-r-[2px] border-r-gray-300 hoverEffect last:border-r-0"
+                to={'/shop'} >
                 <li>{"Shop"}</li>
               </Link>
               <Link
-                className="flex font-normal hover:font-bold w-20 h-6 justify-center items-center px-12 text-base  hover:underline underline-offset-[4px] decoration-[1px] hover:text-[#262626] md:border-r-[2px] border-r-gray-300 hoverEffect last:border-r-0"
+                className="flex font-normal hover:font-bold w-[5rem] h-6 justify-center items-center  text-base  hover:underline underline-offset-[4px] decoration-[1px] hover:text-[#262626] md:border-r-[2px] border-r-gray-300 hoverEffect last:border-r-0"
                 to={'/contact'} >
                 <li>{"Contact"}</li>
               </Link>
               <Link
-                className="flex font-normal hover:font-bold w-20 h-6 justify-center items-center px-12 text-base  hover:underline underline-offset-[4px] decoration-[1px] hover:text-[#262626] md:border-r-[2px] border-r-gray-300 hoverEffect last:border-r-0"
+                className="flex font-normal hover:font-bold w-[5rem]  h-6 justify-center items-center text-base  hover:underline underline-offset-[4px] decoration-[1px] hover:text-[#262626] md:border-r-[2px] border-r-gray-300 hoverEffect last:border-r-0"
                 to={'/about'} >
                 <li>{"About"}</li>
               </Link>
             </ul>
           )}
-
-          {
-            (token ?
-              (<Link to={'/cart'} className='' >
-                <div className=' flex items-center justify-center    w-[5rem]    font-semibold  gap-2 rounded-full '>
-                  <div className='flex justify-start h-full '>
-                    <BiCart className='hover:bg-gray-400  ' size={25} />
-                    <span className='animate-bounce b-9 py-0 px-[0.5rem] bg-green-500   rounded-full text-white'
-                    >{cartData?.length || 0}
-                    </span>
-                  </div>
-                  <BiUserCircle size={25} />
-                </div>
-
-              </Link>) :
-              (<button onClick={handleClick} className=' flex justify-center  items-center w-[5rem] px-2 py-2  rounded-full font-semibold  gap-2 rounded-full '>
-                <FaUserAlt />
-              </button>)
-            )
-          }
-
+          {/* mobile view */}
           {hamburger && (
 
-            <div className="fixed md:hidden bg-white shadow-lg border-[2px] rounded-xl  top-[3.9rem] left-1 px-2  z-50">
+            <div className="fixed md:hidden bg-white shadow-lg border-[2px] rounded-xl  top-[3.9rem] right-1 px-2  z-50">
               <div
                 className=" relative" >
                 <div className="p-7">
@@ -224,53 +181,60 @@ export default function Navbar() {
                     </div>
                     }
                   </ul>
-                  <div className="mt-3 ">
-                    <h1
-                      onClick={() => setCategory(!category)}
-                      className="flex justify-between text-base cursor-pointer items-center font-titleFont mb-2"
-                    >
-                      Shop by Category{" "}
-                      <span className="text-lg">{category ? "-" : "+"}</span>
-                    </h1>
-                    {category && (
-                      <ul
-                        className="text-sm flex flex-col gap-4"
-                      >
-                        <li className="">New Arrivals</li>
-                        <li className="">Gudgets</li>
-                        <li className="">Accessories</li>
-                        <li className="">Electronics</li>
-                        <li className="">Others</li>
-                      </ul>
-                    )}
-                  </div>
-                  <div className="mt-4">
-                    <h1
-                      onClick={() => setBrand(!brand)}
-                      className="flex justify-between text-base cursor-pointer items-center font-titleFont mb-2"
-                    >
-                      Shop by Brand
-                      <span className="text-lg">{brand ? "-" : "+"}</span>
-                    </h1>
-                    {brand && (
-                      <ul
-                        className="text-sm flex flex-col gap-4"
-                      >
-                        <li className="">New Arrivals</li>
-                        <li className="">Gudgets</li>
-                        <li className="">Accessories</li>
-                        <li className="">Electronics</li>
-                        <li className="">Others</li>
-                      </ul>
-                    )}
-                  </div>
                 </div>
               </div>
             </div>
           )}
         </div>
-      </div>
 
+
+        <div className='flex items-center gap-1 '>
+
+          {
+            (token ?
+              (<div className='' >
+                <div className=' flex items-center justify-center    w-[5rem]    font-semibold  gap-2 rounded-full '>
+                  <Link to={'/cart'} className='flex relative h-full '>
+                    <BiCart className='hover:bg-gray-400  ' size={25} />
+                    <span className='animate-bounce absolute -top-3 left-4 px-[0.4rem] bg-green-500   rounded-full text-white'
+                    >{cartData?.length || 0}
+                    </span>
+                  </Link>
+                  <Link to={'/profile'}>
+                    <BiUserCircle size={25} />
+                  </Link>
+                </div>
+
+              </div>) :
+              (<button onClick={handleClick} className=' flex justify-center  items-center w-[5rem] px-2 py-2  rounded-full font-semibold  gap-2 rounded-full '>
+                <FaUserAlt />
+              </button>)
+            )
+          }
+
+          {
+            !hamburger ?
+              (<HiMenuAlt2
+                onClick={() => dispatch({
+                  type: "SET_HAMBURGER",
+                  hamburger: true,
+                })}
+                className="md:hidden cursor-pointer w-8 h-6 "
+              />) :
+              (
+                <MdClose
+                  onClick={() => dispatch({
+                    type: "SET_HAMBURGER",
+                    hamburger: false,
+                  })}
+                  className=" md:hidden cursor-pointer w-8 h-6 "
+                />
+              )
+          }
+
+        </div>
+
+      </div>
     </div >
   )
 }

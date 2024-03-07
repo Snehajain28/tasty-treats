@@ -9,7 +9,7 @@ const Cart = () => {
 
   const [Amt, setAmt] = useState("");
   const [shippingCharge, setShippingCharge] = useState("");
-  const [{ cartData }, dispatch] = useStateValues();
+  const [{ cartData  }, dispatch] = useStateValues();
 
 
   const handleData = useCallback(async () => {
@@ -21,6 +21,13 @@ const Cart = () => {
     setAmt(price);
   }, [cartData]);
 
+  useEffect((() =>{
+    dispatch({
+      type: "SET_HAMBURGER",
+      hamburger:false,
+    })
+  }),[dispatch])
+  
   useEffect((() => {
     handleData();
   }), [handleData])
@@ -138,7 +145,7 @@ const Cart = () => {
                 Your Shopping cart lives to serve. Give it purpose - fill it with
                 books, electronics, videos, etc. and make it happy.
               </p>
-              <Link to="/">
+              <Link to="/shop">
                 <button className="bg-red-600 rounded-md cursor-pointer hover:bg-black active:bg-gray-900 px-8 py-2 font-titleFont font-semibold text-lg text-gray-200 hover:text-white duration-300">
                   Continue Shopping
                 </button>

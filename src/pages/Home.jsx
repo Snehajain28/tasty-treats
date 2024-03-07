@@ -39,26 +39,26 @@ function Home() {
             modules={[Autoplay]}
             className="mySwiper"
           >
-            <SwiperSlide>
-              <div className="w-[18rem] h-[12rem] mx-auto">
+            <SwiperSlide >
+              <div className="w-[90vw] lg:w-[70vw] lg:h-[30vw] h-[50vw] mx-auto">
                 <img className='h-full object-cover  rounded-lg w-full object-fit obejct-cover' alt='' src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSQrSDvsrjlnYzLtZQ17on2162NRp9N_8o6XtFHqsNBs3BRVhgb' />
               </div>
             </SwiperSlide>
 
             <SwiperSlide>
-              <div className="w-[18rem] h-[12rem] mx-auto">
+              <div className="w-[90vw]  lg:w-[70vw] lg:h-[30vw] h-[50vw] mx-auto">
               <img className='h-full object-cover  rounded-lg w-full object-fit obejct-cover' alt='' src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS2GATeYuaB-Ow_sB0Iiq24pOyhk7AyZp4FDu7tH4UEU-a2rgNi' />
               </div>
             </SwiperSlide>
 
-            <SwiperSlide>
-              <div className="w-[18rem] h-[12rem] mx-auto">
+            <SwiperSlide >
+              <div className="w-[90vw]  lg:w-[70vw] lg:h-[30vw] h-[50vw] mx-auto">
               <img className='h-full object-cover  rounded-lg w-full object-fit obejct-cover' alt='' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVKWJUf5Eat5ngcgaHmNeyH0qR7zZZCs7dxOsm0Al2KnBFjMXX' />
               </div>
             </SwiperSlide>
 
-            <SwiperSlide>
-              <div className="w-[18rem] h-[12rem] mx-auto">
+            <SwiperSlide >
+              <div className="w-[90vw]  lg:w-[70vw] lg:h-[30vw] h-[50vw] mx-auto">
               <img className='h-full object-cover  rounded-lg w-full object-fit obejct-cover' alt='' src='https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSA12pCDzsNiLT3tpZ8ci0W1W6x5FCR1uwHxFI3YozFGky1F_ue' />
               </div>
             </SwiperSlide>

@@ -12,7 +12,7 @@ export default function Shop() {
     const [loading, setLoading] = useState(false)
     const [category, setCategory] = useState('')
     const [health, sethealth] = useState('')
-console.log(health)
+    console.log(health)
     const getData = useCallback((async (url) => {
         setLoading(true);
         const res = await axios.get(url)

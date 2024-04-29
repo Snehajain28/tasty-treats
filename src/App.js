@@ -12,6 +12,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Details from "./pages/Deatils";
 import Profile from "./pages/Profile";
+import Navbar from "./components/Navbar";
 
 
 
@@ -55,12 +56,7 @@ function App() {
 
       })
     }
-    else if (!cart) {
-      dispatch({
-        type: "SET_CART_DATA",
-        cartData: [],
-      })
-    }
+  
     dispatch({
       type: "SET_TOTAL_AMOUNT",
       totalAmt: 0,
@@ -72,6 +68,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />

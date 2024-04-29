@@ -31,7 +31,7 @@ function SearchBar() {
   };
 
   return (
-    <div className='w-[90vw] md:w-[70w] lg:w-[50vw] flex flex-col mt-[1.5rem] md:mt-3 mb-[1.5rem] mx-auto'>
+    <div className='w-[90vw] mt-[1rem] md:w-[70w] lg:w-[50vw] flex flex-col mt-[1.5rem] md:mt-3 mb-[1.5rem] mx-auto'>
       <div className='flex border-[2px]  rounded-lg  '>
           <input
         type='text'

@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useStateValues } from '../Utils/Provider';
-import Navbar from '../components/Navbar';
 import Card from '../components/Card';
 import Loader from '../components/Loader';
 import SearchBar from '../components/SearchBar';
@@ -33,7 +32,7 @@ function AllRelatedRecipes() {
 
   return (
     <>
-      < Navbar />
+   
 <div className='md:flex'>
 
 <div>

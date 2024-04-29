@@ -19,7 +19,7 @@ export default function Navbar() {
   const handleClick = () => {
     signInWithPopup(auth, provider)
       .then((response) => {
-        console.log(response._tokenResponse)
+       
         dispatch({
           type: "SET_TOKEN",
           token: response._tokenResponse.idToken,
@@ -63,7 +63,7 @@ export default function Navbar() {
   return (
 
     <div
-      className="w-full h-[60px] fixed bg-white shadow-lg md:shadow-none top-0 z-50 ">
+      className="w-full h-[60px] sticky  bg-white shadow-lg md:shadow-none top-0 z-50 ">
       <div className="flex w-[90vw] mx-auto items-center  justify-between h-full">
 
         <Link to={'/'} className="flex  items-center  gap-1">
@@ -206,8 +206,8 @@ export default function Navbar() {
                 </div>
 
               </div>) :
-              (<button onClick={handleClick} className=' flex justify-center  items-center w-[5rem] px-2 py-2  rounded-full font-semibold  gap-2 rounded-full '>
-                <FaUserAlt />
+              (<button onClick={handleClick} className=' flex border rounded-full justify-center  items-center w-[5rem] px-2 py-2  rounded-full font-semibold  gap-2 rounded-full '>
+                <FaUserAlt /><p>Login</p>
               </button>)
             )
           }

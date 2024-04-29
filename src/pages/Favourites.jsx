@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import { useStateValues } from "../Utils/Provider";
-import Navbar from "../components/Navbar";
 import Recipe from "../components/Recipe";
 import FryingPan from "../components/Fryingpan";
 
@@ -10,11 +9,13 @@ const Favorites = () => {
  if (abs) {
     console.log(dispatch)
   }
+ 
+  
+
  return (
     <>
-    <Navbar/>
       <div className="py-8 container mx-auto flex flex-wrap justify-center gap-10">
-        {  favourites &&   favourites.length > 0 ? (
+        { ( favourites &&  favourites.length) > 0 ? (
              favourites.map((item) => <Recipe recipe={item} />)
         ) : (
           <div>

@@ -1,17 +1,19 @@
 import React, { useCallback, useState } from 'react'
 import { BsDot, BsPatchCheck } from "react-icons/bs"
-import Navbar from '../components/Navbar'
 import Card from '../components/Card'
 import { useStateValues } from '../Utils/Provider'
 import { useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+import FavouritesButton from '../components/FavouritesButton'
+import Loader from '../components/Loader'
 
 
 const Description = () => {
 
   const [{ foodData, abc }, dispatch] = useStateValues();
   const [recommended, setRecommeded] = useState([]);
-  
+
   const query = foodData?.dishType?.[0] || foodData?.category;
 
   const getData = useCallback((async () => {
@@ -27,15 +29,50 @@ const Description = () => {
   if (abc) {
     console.log(dispatch);
   }
-
+  console.log(foodData)
+  if (foodData.length === 0) {
+    return <Loader />
+  }
   return (
-    <div className='w-full'>
-      <Navbar />
-      <div className='mt-[5.6rem] h-[11rem] w-full '>
-        <img src={foodData?.image} alt='' className='h-full rounded-lg w-10/12 lg:w-[35rem] lg:h-[15rem] mx-auto' />
-        <p className='font-semibold text-xl py-7 ml-6 '>{foodData.label}</p>
+    <div className='w-[100vw]'>
+      <div className=' mt-4 h-full w-11/12 mx-auto '>
+        <div className='md:flex flex-row-reverse items-center'>
+          <div className='w-[95vw]'>
+            <p className='font-semibold text-[1.6rem]   ml-3 '>{foodData.label}</p>
+            <div className='flex flex-wrap'>
+              <div className='mt-[1rem] px-2 ml-[1rem] border rounded-full  text-center border-gray-400' >
+                <p className='italic text-gray-500'>{foodData.cuisineType[0]}</p>
+              </div>
+              <div className='mt-[1rem] px-2 ml-[1rem] border rounded-full  text-center border-gray-400' >
+                <p className='italic text-gray-500'>{foodData.dishType[0]}</p>
+              </div>
+              <div className='mt-[1rem] px-2 ml-[1rem] border rounded-full  text-center border-gray-400' >
+                <p className='italic text-gray-500'>{foodData.mealType[0]}</p>
+              </div>
+            </div>
+            <FavouritesButton sty={"right-3 -top-[8rem]"}/>
+          </div>
+          <div className='h-[15rem] mt-[0.8rem] sm:w-[50vw] lg:w-[20vw] w-full'>
+            <img src={foodData?.image} alt='' className='h-full w-full rounded-lg object-cover ' />
+          </div>
+          
+        </div>
+
+        <div className='flex w-full flex-wrap'>
+          {foodData.tags ? <p>Tags</p> : ""}
+          {foodData?.tags?.map((tag, index) => (
+            <Link to={`/${tag}`} key={index}
+              className='mt-[1rem] px-2 ml-[2rem] border rounded-full  text-center border-gray-400' >
+              <p className='italic text-gray-500'>{tag}</p>
+            </Link>
+          ))
+          }
+
+        </div>
+     
       </div>
-      <div className='w-full px-4 lg:px-20 mt-[5rem] '>
+      <div className='w-full  px-4 lg:px-20 mt-[3rem] '>
+
         <div className='flex gap-10 lg:absolute right-2 top-[6rem] items-center justify-center px-4'>
 
           <div className='flex flex-col justify-between'>
@@ -62,27 +99,26 @@ const Description = () => {
 
         </div>
 
-        <div className='w-full flex flex-col md:flex-row gap-8 py-10 pxx-4 md:px-10'>
+        <div className='w-full  flex flex-col md:flex-row gap-8 py-10 px-4 md:px-10'>
           {/* LEFT SIDE */}
-          <div className='w-full md:w-2/4 md:border-r border-slate-800 pr-1'>
+          <div className='w-full md:w-[60vw]  md:border-r border-slate-800 pr-1'>
             <div className='flex flex-col gap-5'>
               <p className='text-green-500 text-2xl underline'>Ingredients</p>
 
               {
                 foodData?.ingredients?.map((ingredient, index) => {
                   return (
-                    <p key={index} className=' flex flex-col py-4  gap-5 border-b-[3px]'>
-                      <div className='shadow-lg  border-[1px]  mx-auto'>
-                        <div className='w-[10rem]'>
-                          <img src={ingredient.image} alt='' className='h-[7rem] py-2 mx-auto rounded-full w-[6.4rem]' />
-                          <div className='py-4 text-center text-gray-700'>{ingredient.food}</div>
+                    <div key={index} className='   py-4 border-b-[1px] pb-4   border-b-[3px]'>
+                      <div className=' flex gap-2 items-center'>
+                        <BsDot size={25} className='-mt-[1rem]' />
+                        <div className='w-[3rem] h-[3rem] '>
+                          <img src={ingredient.image} alt='' className=' mx-auto rounded-full ' />
                         </div>
-                        <div className='border-[2px]  border-gray-900 text-center rounded-full ml-2 '>{ingredient.foodCategory}</div>
+                        <div className='w-full ml-[0.5rem]  flex flex-wap -mt-[1rem]'>
+                          {ingredient.text}
+                        </div>
                       </div>
-                      <div className='flex gap-1 items-center w-full'>
-                        <BsDot className='text-green-800 ' size={50} /> {ingredient.text}
-                      </div>
-                    </p>
+                    </div>
                   )
                 })
               }
@@ -105,13 +141,13 @@ const Description = () => {
 
 
           {/* RIGHT SIDE */}
-          <div className='w-[95vw]  md:w-2/4 2xl:pl-10 mt-10 md:mt-0'>
+          <div className='w-[100vw]  md:w-[40vw] 2xl:pl-10 mt-10 md:mt-0'>
             {
               recommended?.length > 0 && (
                 <>
                   <p className=' text-2xl'>Also Try This</p>
 
-                  <div className='flex flex-wrap pt-10 gap-2 '>
+                  <div className='flex flex-wrap w-full pt-10  '>
                     {
 
                       recommended?.map((data, index) => (

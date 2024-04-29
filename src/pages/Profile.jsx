@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import { BiBook, BiDish, BiHeart, BiPlus } from 'react-icons/bi'
 import { useStateValues } from '../Utils/Provider'
+import { useNavigate } from 'react-router-dom'
 
 function Profile() {
     const [user, setUser] = useState({})
-    const [{ abc }, dispatch] = useStateValues();
-    if (abc) {
+    const [{ token }, dispatch] = useStateValues();
+    const navigate = useNavigate();
 
-    }
-
+   
     useEffect((() => {
         setUser(JSON.parse(localStorage.user))
         dispatch({
@@ -18,6 +18,31 @@ function Profile() {
         })
     }), [dispatch])
 
+    const logoutHandler = async () => {
+        try {
+          if (token) {
+            dispatch({
+              type: "SET_TOKEN",
+              token: "",
+            })
+            dispatch({
+              type: "SET_USER",
+              user: null,
+            });
+            dispatch({
+              type: "SET_HAMBURGER",
+              hamburger: false,
+            })
+            localStorage.removeItem("token");
+            localStorage.removeItem("cart");
+            localStorage.removeItem("user");
+            navigate('/');
+          }
+          //  toast.success("Sign Out Successfully");
+        } catch (error) {
+          //  toast.error("Sign Out Fail");
+        }
+      };
 
     return (
         <div>
@@ -58,7 +83,7 @@ function Profile() {
                         Your Recipes
                     </div>
                 </div>
-                <div className='flex  font-semibold  mt-[3rem] justify-center w-full '>
+                <div onClick={logoutHandler} className='flex  font-semibold  mt-[3rem] justify-center w-full '>
                     <button className='border-[1px] border-gray-900 ounded-lg px-3 p-1' >
                         LogOut
                     </button>

@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CartItem from "../components/CartItem";
 import { useStateValues } from "../Utils/Provider";
-import Navbar from "../components/Navbar";
 
 
 const Cart = () => {
@@ -43,18 +42,12 @@ const Cart = () => {
   }, [Amt]);
 
   return (
-    <div>
-      <Navbar />
-      <div className="max-w-container h-[100vh] mt-[4.5rem] mx-auto px-4">
+    
+      <div className=" h-[100vh] w-[90vw] mx-auto ">
         {cartData?.length > 0 ? (
-          <div className="pb-20">
-            <div className="w-full h-20 bg-[#F5F7F7] text-primeColor hidden lgl:grid grid-cols-5 place-content-center px-6 text-lg font-titleFont font-semibold">
-              <h2 className="col-span-2">Product</h2>
-              <h2>Price</h2>
-              <h2>Quantity</h2>
-              <h2>Sub Total</h2>
-            </div>
-            <div className="mt-[5rem]">
+          <div className="">
+           
+            <div className="mt-[1rem]">
               {cartData.map((item, index) => (
                 <div key={index}>
                   <CartItem item={item} handleData={handleData} />
@@ -118,7 +111,7 @@ const Cart = () => {
                 }
                 }
                   className="flex justify-end">
-                  <Link to="/check-out">
+                  <Link to="/">
                     <button className="w-52 h-10 bg-red-600 text-white hover:bg-black duration-300">
                       Proceed to Checkout
                     </button>
@@ -154,7 +147,7 @@ const Cart = () => {
           </div>
         )}
       </div>
-    </div>
+
   );
 };
 

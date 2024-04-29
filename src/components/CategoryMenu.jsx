@@ -23,8 +23,17 @@ export default function CategoryMenu() {
     getData()
   }), [])
 
-  responsive = {
-    0:""
+  const responsive = {
+    0: {
+      items: 4,
+    },
+    768: {
+      items: 6,
+    },
+    1024: {
+      items: 8,
+      itemsFit: 'contain',
+    }
   }
 
 
@@ -88,15 +97,14 @@ export default function CategoryMenu() {
     },
   ]
 
-  const items = [   data.map((d) => (
-           <Link className='w-[4rem] inline-block rounded-full  h-[3.8rem] border-[2px] shadow-lg' to={`/${d.link}`}>
-              <img alt=''
-                className='h-full category w-full object-cover '
-                src={d.src} />
-            </Link>
-          ))
-        
-        ]
+  const items = data.map((d) => (
+    <Link className='w-[4rem] rounded-full inline-block h-[4rem] border-[2px] shadow-lg' to={`/${d.link}`}>
+      <img alt=''
+        className='h-full rounded-full category w-full object-cover '
+        src={d.src} />
+    </Link>
+  ))
+
 
   return (
     <div className='mt-[3.5rem] w-11/12 md:w-9/12  mx-auto'>
@@ -105,7 +113,10 @@ export default function CategoryMenu() {
 
       <div className='md:mt-[5rem] '>
         <AliceCarousel
-        items={items} />
+          disableButtonsControls
+          touchTracking
+          responsive={responsive}
+          items={items} />
       </div>
     </div>
   )

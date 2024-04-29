@@ -1,12 +1,10 @@
 import React from 'react'
-import Navbar from '../components/Navbar';
 
 const sectionTitle = "Discover Our Story";
 const sectionDescription = `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.`;
 function About() {
     return (
         <>
-        <Navbar/>
             <section className="text-gray-600 body-font">
                 <div className=" mx-auto flex px-5 py-24 items-center justify-center flex-col">
 

@@ -29,14 +29,13 @@ const Description = () => {
   if (abc) {
     console.log(dispatch);
   }
-  console.log(foodData)
   if (foodData.length === 0) {
     return <Loader />
   }
   return (
     <div className='w-[100vw]'>
       <div className=' mt-4 h-full w-11/12 mx-auto '>
-        <div className='md:flex flex-row-reverse items-center'>
+        <div className='md:flex flex-row-reverse gap-10 lg:w-[80vw] mx-auto items-center'>
           <div className='w-[95vw]'>
             <p className='font-semibold text-[1.6rem]   ml-3 '>{foodData.label}</p>
             <div className='flex flex-wrap'>
@@ -50,9 +49,9 @@ const Description = () => {
                 <p className='italic text-gray-500'>{foodData.mealType[0]}</p>
               </div>
             </div>
-            <FavouritesButton sty={"right-3 -top-[8rem]"}/>
+            <FavouritesButton sty={"left-[12rem] -top-[5rem]"}/>
           </div>
-          <div className='h-[15rem] mt-[0.8rem] sm:w-[50vw] lg:w-[20vw] w-full'>
+          <div className='h-[15rem] mt-[0.8rem] sm:w-[50vw] lg:w-[30rem] w-full'>
             <img src={foodData?.image} alt='' className='h-full w-full rounded-lg object-cover ' />
           </div>
           
@@ -101,7 +100,7 @@ const Description = () => {
 
         <div className='w-full  flex flex-col md:flex-row gap-8 py-10 px-4 md:px-10'>
           {/* LEFT SIDE */}
-          <div className='w-full md:w-[60vw]  md:border-r border-slate-800 pr-1'>
+          <div className='w-full md:w-[60vw] lg:w-[70vw]  md:border-r border-slate-800 pr-1'>
             <div className='flex flex-col gap-5'>
               <p className='text-green-500 text-2xl underline'>Ingredients</p>
 
@@ -141,13 +140,13 @@ const Description = () => {
 
 
           {/* RIGHT SIDE */}
-          <div className='w-[100vw]  md:w-[40vw] 2xl:pl-10 mt-10 md:mt-0'>
+          <div className='w-[100vw]  md:w-[40vw] lg:w-[30vw] 2xl:pl-10 mt-10 md:mt-0'>
             {
               recommended?.length > 0 && (
                 <>
                   <p className=' text-2xl'>Also Try This</p>
 
-                  <div className='flex flex-wrap w-full pt-10  '>
+                  <div className='flex flex-wrap justify-center gap-5 w-full pt-10  '>
                     {
 
                       recommended?.map((data, index) => (

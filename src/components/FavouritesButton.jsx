@@ -6,14 +6,12 @@ export default function FavouritesButton({data,sty}) {
 
     const [click, setClick] = useState(false);
     const [{ favourites }, dispatch] = useStateValues();
-
     const handleFavourites = () => {
 
         setClick(!click)
         if (!click) {
 
             let arr = favourites;
-
             arr?.push(data)
             dispatch({
                 type: "SET_FAVOURITES",

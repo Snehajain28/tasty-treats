@@ -34,8 +34,6 @@ function AllRelatedRecipes() {
     <>
    
 <div className='md:flex'>
-
-<div>
 <SearchBar />
 {
   loading ? (
@@ -54,7 +52,7 @@ function AllRelatedRecipes() {
       </div >
     )
 }
-</div>
+
 </div>
     </>
   )

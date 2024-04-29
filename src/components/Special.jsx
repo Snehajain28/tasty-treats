@@ -51,11 +51,11 @@ export default function Special() {
     return (
         <div className='mt-[1rem] h-content w-[90vw] mx-auto'>
             <p className='pb-3 font-bold  text-[1.3rem]'>Delicious Food</p>
-            <div className=' w-[90vw] h-content gap-10 flex justify-center md:gap-10  flex-wrap '>
+            <div className=' w-[90vw] h-content gap-10 flex justify-center md:gap-15 flex-wrap '>
                 {
                     SpecialFoodData.map((data, index) => (
 
-                        <Link to={`/food/${data.idMeal}`} key={index} className=' w-[16rem]  h-[12rem] '>
+                        <Link to={`/food/${data.idMeal}`} key={index} className=' w-[16rem] m-5 h-[12rem] '>
 
                             <img className=' w-[14rem] h-[10rem] object-cover  '
                                 src={data.strMealThumb} alt='' />

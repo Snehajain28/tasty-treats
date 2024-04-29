@@ -37,7 +37,7 @@ function Card({ data }) {
             <div onClick={setData}
                 className='flex flex-col items-center justify-between w-11/12'>
                 <img src={data.img || data?.image}
-                    alt='' className='h-[8rem] filter  img '>
+                    alt='' className='h-[8rem] object-cover  img '>
                 </img>
 
             </div>
@@ -53,8 +53,8 @@ function Card({ data }) {
 
 
             </div>
-           <div>
-            <FavouritesButton sty={"left-10"}/>
+           <div className='absolute -top-1 right-8'>
+            <FavouritesButton data={data}/>
            </div>
         </div>
     )

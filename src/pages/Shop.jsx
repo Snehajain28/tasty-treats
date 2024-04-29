@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import axios from 'axios'
-import Navbar from '../components/Navbar';
 import ShopCard from '../components/ShopCard';
 import Loader from '../components/Loader';
 
@@ -12,7 +11,9 @@ export default function Shop() {
     const [loading, setLoading] = useState(false)
     const [category, setCategory] = useState('')
     const [health, sethealth] = useState('')
-   
+
+    console.log(health);
+
     const getData = useCallback((async (url) => {
         setLoading(true);
         const res = await axios.get(url)
@@ -33,13 +34,12 @@ export default function Shop() {
 
 
     return (
-        <div>
-            <Navbar />
-            <div className='mt-[5rem]'>
-                <h1 className='ml-4 font-semibold text-[1.2rem] my-4'>Categories</h1>
+        <div className='h-[100v] w-[100vw]'>
+            <div className='mt-[1rem]'>
+                <h1 className='ml-4 font-semibold text-[1.2rem] mb-2'>Categories</h1>
                 <div className='w-[95vw] flex flex-wrap gap-2 justify-center'>
                     <p onClick={() => { setCategory("generic-foods") }}
-                        className='border-[2px] rounded-full p-2 '>generic-foods</p>
+                        className='border-[2px] rounded-full px-2 py-2 '>generic-foods</p>
                     <p onClick={() => { setCategory("generic-meals") }}
                         className='border-[2px] rounded-full p-2 ' >generic-meals</p>
                     <p onClick={() => { setCategory("packaged-foods") }}
@@ -49,7 +49,7 @@ export default function Shop() {
                 </div>
             </div>
             <div className='mt-[1rem]'>
-                <h1 className='ml-4 font-semibold text-[1.2rem] my-4'>Health</h1>
+                <h1 className='ml-4 font-semibold text-[1.2rem] mb-4'>Health</h1>
                 <div className='w-[95vw] flex flex-wrap gap-2 justify-center'>
                     <p onClick={() => { sethealth("alcohol-free") }}
                         className='border-[2px] rounded-full p-2 '>alcohol-free</p>
@@ -62,8 +62,7 @@ export default function Shop() {
                 </div>
             </div>
 
-
-            <div className='h-[57vh] overflow-y-scroll mt-[1rem] lg:gap-9 gap-4 mx-auto lg:w-[80vw] w-[95vw] justify-center flex flex-wrap'>
+            <div className='overflow-y-scroll  lg:gap-9 gap-4 mx-auto lg:w-[80vw] w-[95vw] justify-center flex flex-wrap'>
 
                 {
                     loading ? (<Loader />) :
@@ -78,7 +77,7 @@ export default function Shop() {
             }}
                 className='font-semibold  text-center'
             >
-                <button className='rounded-full mt-[2rem] py-[0.9rem] text-[1.2rem] bg-green-400 w-[7rem]'>Next</button>
+                <button className='rounded-full mt-[8rem] py-1 text-[1.2rem] bg-green-400 w-[7rem]'>Next</button>
             </div>
         </div>
     )

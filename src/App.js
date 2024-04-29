@@ -56,7 +56,7 @@ function App() {
 
       })
     }
-  
+
     dispatch({
       type: "SET_TOTAL_AMOUNT",
       totalAmt: 0,
@@ -67,9 +67,9 @@ function App() {
 
 
   return (
-    <div className="App">
-      <Navbar/>
-      <Routes>
+    <div className="App h-contett">
+      <Navbar />
+      <Routes className="h-content">
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/contact" element={<Contact />} />
@@ -82,6 +82,7 @@ function App() {
         <Route path="/favourites" element={<Favourites />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+     
     </div>
   );
 }

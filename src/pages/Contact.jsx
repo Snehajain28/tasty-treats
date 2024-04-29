@@ -3,7 +3,6 @@ import { BsGithub } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa";
 import { ImInstagram } from "react-icons/im";
 import { MdMail } from "react-icons/md";
-import Navbar from "../components/Navbar";
 
 const sectionTitle = "Get in Touch";
 const sectionDescription = "Sed arcu.Cras consequat.";
@@ -42,7 +41,6 @@ function Contact() {
 
     return (
         <section id="contact-section" className="body-font">
-            <Navbar/>
             <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
 
                 <div className="flex flex-col text-center w-full mb-20">
